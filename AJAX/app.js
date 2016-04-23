@@ -37,17 +37,19 @@ $(document).ready(function(){
       error: function () {
 				console.log("error occured");
 			},
-      success: function(data) {
-          var date = new Date(data.dt * 1000);
+      success: function (data) {
+				  data.list.forEach(function (info) {
+          var date = new Date(info.dt * 1000);
           var dateStr = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
           var timeStr = date.getHours() + ':' + date.getMinutes();
-          var temparature = Math.round(data.main.temp-273.5, 2);
-          var humidity = data.main.humidity;
-          var weather = data.weather[0].description;
-					$('#textInfo').text('Forecast for 5 days for city ' + cityName + ',' + data.city.country);
+          var temparature = Math.round(info.main.temp - 273.5, 2);
+          var humidity = info.main.humidity;
+          var weather = info.weather[0].description;
+					$('#textInfo').text('Forecast of 5 days for every 3 hours for the city ' + cityName + ' , ' + data.city.country);
           var innerHtml = '<tr><td>' + dateStr + '</td><td>' + timeStr + '</td><td>' + temparature + '</td><td>' + humidity + '</td><td>' + weather + '</td></tr>';
           $('tbody').append(innerHtml);
           $('#result').show();
+				});
 			}
 		});
 	});
