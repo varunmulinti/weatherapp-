@@ -46,7 +46,7 @@ $(document).ready(function(){
           var humidity = info.main.humidity;
           var weather = info.weather[0].description;
 					$('#textInfo').text('Forecast of 5 days for every 3 hours for the city ' + cityName + ' , ' + data.city.country);
-          var innerHtml = '<tr><td>' + dateStr + '</td><td>' + timeStr + '</td><td>' + temparature + '</td><td>' + humidity + '</td><td>' + weather + '</td></tr>';
+          var innerHtml = '<tr><td>' + dateStr + ' , ' + timeStr + '</td><td>' + temparature + '</td><td>' + humidity + '</td><td>' + weather + '</td></tr>';
           $('tbody').append(innerHtml);
           $('#result').show();
 				});
